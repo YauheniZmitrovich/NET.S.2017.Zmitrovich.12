@@ -1,0 +1,8 @@
+E:\EPAM\NET.S.2017.Zmitrovich.12\Task1.ConsoleUI\bin\Debug\Task1.ConsoleUI.exe.config
+E:\EPAM\NET.S.2017.Zmitrovich.12\Task1.ConsoleUI\bin\Debug\Task1.ConsoleUI.exe
+E:\EPAM\NET.S.2017.Zmitrovich.12\Task1.ConsoleUI\bin\Debug\Task1.ConsoleUI.pdb
+E:\EPAM\NET.S.2017.Zmitrovich.12\Task1.ConsoleUI\bin\Debug\Task1.Logic.dll
+E:\EPAM\NET.S.2017.Zmitrovich.12\Task1.ConsoleUI\bin\Debug\Task1.Logic.pdb
+E:\EPAM\NET.S.2017.Zmitrovich.12\Task1.ConsoleUI\obj\Debug\Task1.ConsoleUI.csprojResolveAssemblyReference.cache
+E:\EPAM\NET.S.2017.Zmitrovich.12\Task1.ConsoleUI\obj\Debug\Task1.ConsoleUI.exe
+E:\EPAM\NET.S.2017.Zmitrovich.12\Task1.ConsoleUI\obj\Debug\Task1.ConsoleUI.pdb
