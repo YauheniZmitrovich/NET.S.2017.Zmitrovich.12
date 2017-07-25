@@ -34,7 +34,7 @@ namespace Task2.Logic
         /// </returns>
         public static int BinarySearch<T>(T[] arr, int index, int count, T item, IComparer<T> comparer)
         {
-            if(arr==null)
+            if (arr == null)
                 throw new ArgumentNullException(nameof(arr));
             if (index < 0)
                 throw new ArgumentException("The index can't be less than zero.");
@@ -42,8 +42,25 @@ namespace Task2.Logic
                 throw new ArgumentException("The count can't be less than zero.");
             if (arr.Length < index + count)
                 throw new ArgumentException("The search area more than current area.");
+            if (comparer == null)
+                comparer = Comparer<T>.Default;
 
-            return Array.BinarySearch<T>(arr, index, count, item, comparer);
+            int last = index + count;
+
+            while (index < last)
+            {
+                int mid = index + (last - index) / 2;
+
+                if (comparer.Compare(item, arr[mid]) <= 0)
+                    last = mid;
+                else
+                    index = mid + 1;
+            }
+
+            if (arr[last].Equals(item))
+                return last;
+
+            return -1;
         }
 
         /// <summary>
