@@ -12,6 +12,8 @@ namespace Task2.Logic
     /// </summary>
     public static class Searcher
     {
+        #region Search with index, count and custom comparison
+
         /// <summary>
         ///  Searches a range of elements in a one-dimensional sorted array for a value, using
         ///  the specified System.Collections.Generic.IComparer generic interface.
@@ -34,6 +36,8 @@ namespace Task2.Logic
         /// </returns>
         public static int BinarySearch<T>(T[] arr, int index, int count, T item, IComparer<T> comparer)
         {
+            #region Validation
+
             if (arr == null)
                 throw new ArgumentNullException(nameof(arr));
             if (index < 0)
@@ -43,7 +47,15 @@ namespace Task2.Logic
             if (arr.Length < index + count)
                 throw new ArgumentException("The search area more than current area.");
             if (comparer == null)
-                comparer = Comparer<T>.Default;
+            {
+                comparer = (item is IComparable<T>)
+                    ? Comparer<T>.Default
+                    : throw new ArgumentException("The type must be IComparable or use IComparer<T> or Comparison<T>.");
+            }
+
+            #endregion
+
+            #region Algorithm
 
             int last = index + count;
 
@@ -61,6 +73,8 @@ namespace Task2.Logic
                 return last;
 
             return -1;
+
+            #endregion
         }
 
         /// <summary>
@@ -85,6 +99,10 @@ namespace Task2.Logic
         public static int BinarySearch<T>(T[] arr, int index, int count, T item, Comparison<T> delComparison) =>
             BinarySearch(arr, index, count, item, Comparer<T>.Create(delComparison));
 
+        #endregion
+
+
+        #region Search without index, count and custom comparison
 
         /// <summary>
         ///  Searches a range of elements in a one-dimensional sorted array for a value.
@@ -103,6 +121,10 @@ namespace Task2.Logic
         public static int BinarySearch<T>(T[] arr, T item) =>
             BinarySearch(arr, 0, arr.Length, item, (IComparer<T>)null);
 
+        #endregion
+
+
+        #region Search with custim comparison
 
         /// <summary>
         ///  Searches a range of elements in a one-dimensional sorted array for a value, using
@@ -144,5 +166,7 @@ namespace Task2.Logic
         /// </returns>
         public static int BinarySearch<T>(T[] arr, T item, Comparison<T> delComparison) =>
             BinarySearch(arr, 0, arr.Length, item, delComparison);
+
+        #endregion
     }
 }

@@ -8,6 +8,12 @@ using NUnit.Framework;
 
 namespace Task2.Logic.Tests
 {
+    public class Book
+    {
+        public string Title { get; set; }
+        public string Author { get; set; }
+    }
+
     [TestFixture]
     public class SearcherTests
     {
@@ -40,7 +46,7 @@ namespace Task2.Logic.Tests
 
             Comparison<int> delComparison = (x, y) => x.CompareTo(y);
 
-            Assert.AreEqual(3, Searcher.BinarySearch(arr,2, Comparer<int>.Create(delComparison)));
+            Assert.AreEqual(3, Searcher.BinarySearch(arr, 2, Comparer<int>.Create(delComparison)));
         }
 
         [Test]
@@ -62,6 +68,18 @@ namespace Task2.Logic.Tests
             Comparison<int> delComparison = (x, y) => x.CompareTo(y);
 
             Assert.AreEqual(4, Searcher.BinarySearch(arr, 4));
+        }
+
+        [Test]
+        public void BinarySearch_SearchForBook_ThrowsArgumentException()
+        {
+            Book book1 = new Book() { Author = "Albahari", Title = "C# 6.0" };
+            Book book2 = new Book() { Author = "Richter", Title = "CLR via C#" };
+            Book book3 = new Book() { Author = "Bradbury ", Title = "Fahrenheit 451" };
+
+            Book[] books = new Book[] { book1, book2, book3 };
+
+            Assert.Catch<ArgumentException>(() => Searcher.BinarySearch(books, book2));
         }
 
     }
